@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+    linux:
+        build: ./linux
+        image: linux
+        volumes:
+            - ../public:/root/
+        stdin_open: true
+        tty: true
+networks:
+    app-network:
+        driver: bridge
