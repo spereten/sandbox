@@ -177,3 +177,26 @@ awk  '{if (NR!=1) {print $3}}' table.txt | uniq -c | sort -nr | head -3
 ./sort-user.sh 
 —É—áexit
 exit
+—cd 
+cd 
+ls
+./sort-user.sh 
+./sort-user.sh —./table.txt
+./sort-user.sh —./table.txt
+./sort-user.sh ./table.txt
+./sort-user.sh ./table.txt
+./sort-user.sh ./table.txt
+./sort-user.sh ./table.txt
+head -h
+head --help
+./sort-user.sh ./table.txt
+./sort-user.sh ./table.txt
+./sort-user.sh ./table.txt
+./sort-user.sh ./table.txt
+./sort-user.sh ./table.txt
+./sort-user.sh ./table.txt
+./sort-user.sh ./table.txt
+./sort-user.sh ./table.txt
+./sort-user.sh ./table.txt
+./sort-user.sh ./table.txt
+exit
