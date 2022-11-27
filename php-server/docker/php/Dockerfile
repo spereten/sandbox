@@ -15,7 +15,5 @@ RUN apt-get update && apt-get install -y \
      && pecl install redis memcache && \
         docker-php-ext-enable redis memcache
 
-COPY ./config/www.conf /usr/local/etc/php-fpm.d/www.conf
-COPY ./config/php.ini /usr/local/etc/php/conf.d/php-custom.ini
 
 CMD ["php-fpm"]
