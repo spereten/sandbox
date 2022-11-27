@@ -1,0 +1,18 @@
+{
+    "name": "spereten/string",
+    "type": "library",
+    "autoload": {
+        "files": ["src/functions.php"],
+        "psr-4": {
+            "Spereten\\String\\": "src/"
+        }
+    },
+
+    "authors": [
+        {
+            "name": "Artem Aleinik",
+            "email": "2670207@gmail.com"
+        }
+    ],
+    "require": {}
+}

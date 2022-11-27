@@ -1,5 +1,5 @@
 FROM php:8.1-fpm
- 
+
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
@@ -8,12 +8,14 @@ RUN apt-get update && apt-get install -y \
 	libzip-dev \
 	libmemcached-dev \
 	libmcrypt-dev \
+        htop \
         && docker-php-ext-install -j$(nproc) iconv mbstring mysqli pdo_mysql zip \
 	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
         && docker-php-ext-install -j$(nproc) gd \
      && pecl install redis memcache && \
         docker-php-ext-enable redis memcache
 
-COPY ./php.ini /usr/local/etc/php/conf.d/php-custom.ini
+COPY ./config/www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY ./config/php.ini /usr/local/etc/php/conf.d/php-custom.ini
 
 CMD ["php-fpm"]
