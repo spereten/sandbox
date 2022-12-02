@@ -5,6 +5,6 @@ EXPOSE 80
 RUN rm -f /etc/nginx/conf.d/default.conf
 
 COPY ./conf.d /etc/nginx/conf.d
-s
+
 
 CMD ["nginx", "-g", "daemon off;"]

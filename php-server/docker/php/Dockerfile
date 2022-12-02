@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
         && docker-php-ext-install -j$(nproc) gd \
      && pecl install redis memcache && \
-        docker-php-ext-enable redis memcache
+        docker-php-ext-enable memcache
 
+COPY ./conf.d /usr/local/etc/php/conf.d/
 
 CMD ["php-fpm"]
