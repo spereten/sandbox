@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Otus\Task\Http;
 
-use Otus\Task\Http\Parameter\PostParameter;
+use Otus\Task\Http\Parameters\PostParameter;
 
 class Request
 {
@@ -16,6 +16,11 @@ class Request
     public static function create(): static
     {
         return new static($_POST);
+    }
+
+    public function isPost(): bool
+    {
+        return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
 
 }

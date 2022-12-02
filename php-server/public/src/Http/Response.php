@@ -6,13 +6,11 @@ use \Stringable;
 class Response implements Stringable
 {
 
-    public function __construct(private readonly Stringable | string $result, private readonly string $status)
-    {
-    }
+    public function __construct(private string|null|Stringable $result, private int $status){}
 
     public function __toString(): string
     {
-        echo $this->status;
-        return $this->result;
+        http_response_code($this->status);
+        return (string)$this->result;
     }
 }

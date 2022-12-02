@@ -7,7 +7,7 @@ class Validator implements  \Stringable
 {
     private array $errors = [];
 
-    public function __construct(private readonly string $string, private readonly array $rules)
+    public function __construct(private string|null $string, private array $rules)
     {
         $this->process();
     }
@@ -15,7 +15,7 @@ class Validator implements  \Stringable
     private function process(): void
     {
         foreach ($this->rules as $rule){
-            $rule = new $rule($this->string);
+            $rule = new $rule((string)$this->string);
             if($rule->validate()){
                 $this->errors[] = $rule->message();
             }
@@ -30,6 +30,6 @@ class Validator implements  \Stringable
 
     public function __toString(): string
     {
-        return 'test';
+        return implode('/',$this->errors);
     }
 }

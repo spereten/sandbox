@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Otus\Task\Validation;
+namespace Otus\Task\Validation\Rules;
 
 
-class BracketsRule extends ValidateRule
+class BracketsRule implements Rules
 {
 
-    public function __construct(private readonly string $string){}
+    public function __construct(private string $string){}
 
     public function validate() : bool
     {
@@ -31,12 +31,7 @@ class BracketsRule extends ValidateRule
 
     public function message() : string
     {
-        return 'Тело запроса не должно быть пустым';
+        return  sprintf('Срока "%s" не прошла валидацию', $this->string) ;
     }
-
-
-
-
-
 
 }
