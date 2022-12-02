@@ -3,10 +3,8 @@ declare(strict_types=1);
 
 namespace Otus\Task\Validation;
 
-abstract class ValidateRule
+interface ValidateRule
 {
-    abstract public function validate(): bool;
-    abstract public function message(): string;
-
-
+     public function validate(): bool;
+     public function message(): string;
 }

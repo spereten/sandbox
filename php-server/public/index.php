@@ -8,7 +8,7 @@ parse_str(file_get_contents('php://input'), $post);
 $stringForValidation = $post['string'] ?? null;
 
 
-(new \Otus\Task\Application())->run();
+echo (new \Otus\Task\Application())->run();
 
 try {
     if (!$stringForValidation) {

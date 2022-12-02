@@ -6,26 +6,27 @@ namespace Otus\Task;
 use Otus\Task\Http\Response;
 use Otus\Task\Validation\BracketsRule;
 use Otus\Task\Validation\Validator;
+use \Otus\Task\Http\Request;
 
 class Application
 {
-   // private $request = null;
+
+    private Request $request;
 
     public function __construct()
     {
-        //$this->request = \Otus\Task\Http\Request::createFromGlobals();
+        $this->request = Request::create();
     }
 
     public function run(){
 
         try{
 
-            $validator = new Validator('post', [BracketsRule::class]);
+            $validator = new Validator($this->request->post->get('string'), [BracketsRule::class]);
             if(!$validator->isValid()){
                 return new Response($validator, status: '200');
             }else{
-                return new Response(status: '400');
-
+                return new Response('sdsd', status: '400');
             }
 
         }catch (\Exception $exception){

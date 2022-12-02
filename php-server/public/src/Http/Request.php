@@ -13,7 +13,7 @@ class Request
         $this->post = new PostParameter($post);
     }
 
-    public static function createFromGlobals(): static
+    public static function create(): static
     {
         return new static($_POST);
     }
