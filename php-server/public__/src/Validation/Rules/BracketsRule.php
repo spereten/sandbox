@@ -4,10 +4,8 @@ declare(strict_types=1);
 namespace Otus\Task\Validation\Rules;
 
 
-class BracketsRule implements Rules
+class BracketsRule extends RulesAbstract implements RulesInterface
 {
-
-    public function __construct(private string $string){}
 
     public function validate() : bool
     {
