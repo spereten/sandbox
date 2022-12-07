@@ -7,7 +7,7 @@ use Otus\Task\Validation\Contract\RuleContract;
 
 abstract class Rules implements RuleContract
 {
-    protected $value;
+    protected mixed $value;
 
     public function setValue(mixed $value)
     {
