@@ -10,6 +10,7 @@ use Otus\Task06\Services\EmailReaderService;
 use Otus\Task06\Validation\Rules\EmailDNSRule;
 use Otus\Task06\Validation\Rules\EmailRule;
 use Otus\Task06\Validation\Validator;
+use Otus\Task06\View\View;
 
 class Application
 {
@@ -27,15 +28,14 @@ class Application
     {
 
         try{
-            $data = [];
+            $emails = [];
             $file = new EmailReaderService($this->config->get('path.emails'));
 
                 foreach ($file->getEmails() as $email) {
-                    $data[] =  $validator = Validator::make($email, [new EmailRule(), new EmailDNSRule()]);
+                    $emails[] =  $validator = Validator::make($email, [new EmailRule(), new EmailDNSRule()]);
                 }
-                var_dump($data);
 
-            return new Response($data, status: 200);
+            return new Response(View::make(['emails' => $emails], 'layout'), status: 200);
 
         }catch (\Exception $exception){
             return new Response($exception->getMessage(), status: 500);
