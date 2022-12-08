@@ -35,7 +35,7 @@ class Application
                     $emails[] =  $validator = Validator::make($email, [new EmailRule(), new EmailDNSRule()]);
                 }
 
-            return new Response(View::make(['emails' => $emails], 'layout'), status: 200);
+            return new Response(View::make(['emails' => $emails], 'layout'));
 
         }catch (\Exception $exception){
             return new Response($exception->getMessage(), status: 500);
