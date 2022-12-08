@@ -34,8 +34,8 @@ class Application
                 foreach ($file->getEmails() as $email) {
                     $emails[] =  $validator = Validator::make($email, [new EmailRule(), new EmailDNSRule()]);
                 }
-
-            return new Response(View::make(['emails' => $emails], 'layout'));
+            $view = new View($config);
+            return new Response($view->make(['emails' => $emails], 'layout'));
 
         }catch (\Exception $exception){
             return new Response($exception->getMessage(), status: 500);

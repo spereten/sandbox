@@ -5,12 +5,12 @@ namespace Otus\Task06\View;
 class View implements \Stringable
 {
 
-    public function __construct(private array $data, private string $view)
+    public function __construct(private $config = [])
     {
-
+        $this->dir = $this->config->get('path.views');
     }
 
-    public static function make(array $data, string $view){
+    public function make(array $data, string $view){
 
 
         return new self($data, $view);
