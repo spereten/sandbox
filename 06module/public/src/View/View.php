@@ -5,24 +5,24 @@ namespace Otus\Task06\View;
 class View implements \Stringable
 {
 
-    public function __construct(private $config = [])
+    public function __construct($viewDir)
     {
-        $this->dir = $this->config->get('path.views');
+        $this->dir = $viewDir;
     }
 
-    public function make(array $data, string $view){
+    public function render(array $data, string $view){
 
+        $file = $this->dir . DIRECTORY_SEPARATOR . $view . '.php';
 
-        return new self($data, $view);
-
-    }
-    public function render(){
+        if(!is_file($file)){
+            throw new \Exception(sprintf('Файл "%s" шаблонизатора не найден', $file));
+        }
         ob_start();
+        extract($data);
 
-        extract($this->data);
-        include $this->view;
+        include $file;
 
-        return ob_get_clean();
+        return ob_get_contents();
     }
 
     public function __toString(): string

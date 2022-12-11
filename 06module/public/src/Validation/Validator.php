@@ -35,6 +35,7 @@ class Validator implements ValidatorContract, \Stringable
                 $rule->setValue($this->value);
                 if(!$rule->validate()){
                     $this->errors[] = $rule->message();
+                        break;
                 }
             }
         }

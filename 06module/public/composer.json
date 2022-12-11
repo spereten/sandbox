@@ -3,7 +3,8 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Otus\\Task06\\": "src/"
+            "Otus\\Task06\\": "src/",
+            "Otus\\Task06\\App\\": "app/"
         }
     },
     "require": {}

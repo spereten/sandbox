@@ -1,0 +1,11 @@
+{
+    "name": "otus/task",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Otus\\Task07\\": "core/",
+            "Otus\\Task07\\App\\": "app/"
+        }
+    },
+    "require": {}
+}

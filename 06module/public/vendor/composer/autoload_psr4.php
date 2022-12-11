@@ -6,5 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Otus\\Task06\\App\\' => array($baseDir . '/app'),
     'Otus\\Task06\\' => array($baseDir . '/src'),
 );
