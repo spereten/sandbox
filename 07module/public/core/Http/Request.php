@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Otus\Task07\Http;
+namespace Otus\Task07\Core\Http;
 
-use Otus\Task07\Http\Parameters\PostParameter;
+use Otus\Task07\Core\Http\Parameters\PostParameter;
 
 class Request
 {

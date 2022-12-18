@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 
-namespace Otus\Task07\Http\Parameters;
+namespace Otus\Task07\Core\Http\Parameters;
 
 class PostParameter
 {

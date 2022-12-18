@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Otus\Task07\View;
+namespace Otus\Task07\Core\View;
 
 class View implements \Stringable
 {

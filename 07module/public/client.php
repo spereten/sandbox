@@ -1,34 +1,22 @@
 <?php
 $host = dirname(__FILE__)."/server.sock";
-set_time_limit(5); // To prevent possible hang, unlikely in client.
-function connect($h,$msg)
-{
-    $s = socket_create(AF_UNIX,SOCK_STREAM,0);
+error_reporting(E_ERROR | E_PARSE);
 
-    try{
-        $conn_outcome = socket_connect($s,$h);
+$socket = socket_create(AF_UNIX,SOCK_STREAM,0);
+socket_connect($socket, $host);
+/*Client
+    socket()
+    bind() [optional, see below]
+    connect() [does an implicit bind on an ephemeral port if not already bound]
+*/
+while (true){
 
-        try
-        {
-            socket_write($s,$msg,strlen($msg));
-        }
-        catch(Exception $e)
-        {
-            printf($e->getMessage());
-            socket_close($s);
-        }
-        sleep(3);
-        printf("\n%s\n",socket_read($s,1024));
-        socket_close($s);
-        printf("Closed.");
+    $message = fgets(fopen('php://stdin', 'r'));
+    if($message){
+        $rs = socket_write($socket, $message, strlen($message));
+        echo socket_strerror(socket_last_error()) . PHP_EOL;
 
     }
-    catch(Exception $e)
-    {
-        printf($e->getMessage());
-        socket_close($s);
-    }
-
 }
 
-connect($host,'Helloo_010101!');
+# https://www.php.net/manual/ru/function.socket-accept.php

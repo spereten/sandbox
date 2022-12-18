@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Otus\Task07\Config;
+namespace Otus\Task07\Core\Config;
 
-use Otus\Task07\Config\Contracts\ConfigContract;
+use Otus\Task07\Core\Config\Contracts\ConfigContract;
 
 
 class Config implements ConfigContract, \ArrayAccess

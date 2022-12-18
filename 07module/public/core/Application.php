@@ -1,36 +1,33 @@
 <?php
 declare(strict_types=1);
 
-namespace Otus\Task07;
+namespace Otus\Task07\Core;
 
-use Otus\Task07\App\Services\EmailReaderService;
-use Otus\Task07\Config\Config;
-use Otus\Task07\Container\Container;
-use Otus\Task07\Http\Response;
-use Otus\Task07\App\Validation\Rules\EmailDNSRule;
-use Otus\Task07\App\Validation\Rules\EmailRule;
-use Otus\Task07\Validation\Validator;
-use Otus\Task07\View\View;
+use Otus\Task07\Core\Config\Config;
+use Otus\Task07\Core\Container\Container;
+use Otus\Task07\Core\View\View;
 
 class Application extends Container
 {
-
-    public function run(): Response
+    public function __construct()
     {
+        $this->registerContainers();
+    }
 
-        try{
-
-            return '';
-        }catch (\Exception $exception){
-
-        }
+    public function run($controller){
+        $controller();
     }
 
     public function registerContainers(){
 
         $this->set('app_path', __DIR__ . '/..');
-
         $this->set('config', new Config($this['app_path'] . '/config/app.php'));
-        $this->set('view' , new View($this['config']['path_view']));
+        $this->set('view', new View($this['config']['path_view']));
+
+    }
+
+    public function isCommandLine(): bool
+    {
+        return php_sapi_name() === "cli";
     }
 }

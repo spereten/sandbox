@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Otus\Task07\Container;
+namespace Otus\Task07\Core\Container;
 
 
-use Otus\Task07\Container\Contracts\ContainerContract;
+use Otus\Task07\Core\Container\Contracts\ContainerContract;
 
 class Container implements ContainerContract, \ArrayAccess
 {
@@ -14,13 +14,13 @@ class Container implements ContainerContract, \ArrayAccess
         return isset($this->containers[$id]) ? $this->containers[$id] : null;
     }
 
+    public function getContainer(mixed $id){
+        return isset($this->containers[$id]) ? $this->containers[$id] : null;
+    }
+
     public function set(mixed $id, mixed $value)
     {
-        if ($this->has($id)) {
-            $this->containers[] = $value;
-        } else {
-            $this->containers[$id] = $value;
-        }
+        $this->containers[$id] = $value;
     }
 
     public function has(mixed $id): bool
