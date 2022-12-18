@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Otus\Task07\Core\Http;
 use \Stringable;
+
 class Response implements Stringable
 {
 
