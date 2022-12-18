@@ -10,7 +10,6 @@ class Response implements Stringable
 
     public function __toString(): string
     {
-        var_dump('tet'); die();
         http_response_code($this->status);
         return (string)$this->result;
     }

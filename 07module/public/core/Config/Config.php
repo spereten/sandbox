@@ -12,7 +12,6 @@ class Config implements ConfigContract, \ArrayAccess
 
     public function __construct($path)
     {
-
         $this->container = require $path;
     }
 
@@ -23,7 +22,7 @@ class Config implements ConfigContract, \ArrayAccess
 
     public function has(mixed $id): bool
     {
-        return isset($this->containers[$id]);
+        return isset($this->container[$id]);
     }
 
     public function offsetSet(mixed $offset, mixed $value): void
@@ -38,7 +37,7 @@ class Config implements ConfigContract, \ArrayAccess
 
     public function offsetUnset(mixed $offset): void
     {
-        unset($this->containers[$offset]);
+        unset($this->container[$offset]);
     }
 
     public function offsetGet(mixed $offset): mixed
